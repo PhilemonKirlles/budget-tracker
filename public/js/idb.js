@@ -1,0 +1,101 @@
+//  variable for db connection
+let db;
+
+//   establish a connection to the db making e.g variable called request
+const request = indexedDB.open('budget-tracker', 1);
+
+//event trigger the db as version changes
+request.onupgradeneeded = function (event) {
+  // saves a reference to the db
+  db = event.target.result;
+  // creates a new object store called new_transaction with an autoIncrementing primary key
+  db.createObjectStore('new_transaction', { autoIncrement: true });
+};
+
+//  if successful connection, then we trigger the following event
+request.onsuccess = function (event) {
+  // saves a reference to the db
+  db = event.target.result;
+  // if app is online upload new_transaction transactions
+  if (navigator.onLine) {
+    checkDatabase();
+  }
+};
+
+// if there is an error, then we trigger the following event
+request.onerror = function (event) {
+  console.log(event.target.errorCode);
+};
+
+// function to add transactions to the db if app is offline
+function saveRecord(record) {
+  // opens a transaction on the new_transaction object store with readwrite access
+  const transaction = db.transaction(['new_transaction'], 'readwrite');
+  // accesses the new_transaction object store
+  const store = transaction.objectStore('new_transaction');
+
+  // adds the record to the store
+  store.add(record);
+}
+
+// function to upload new_transaction transactions to server if app is online
+function checkDatabase() {
+  //  opens a transaction on db with readwrite access
+  const transaction = db.transaction(['new_transaction'], 'readwrite');
+  // accesses the new_transaction object store and stores it in a variable called store
+  const store = transaction.objectStore('new_transaction');
+  // gets all records from the store and stores it in a variable called getAllStores
+  const getAllStores = store.getAll();
+
+  // if there are records in the store, then we trigger the following event
+  getAllStores.onsuccess = function () {
+    // if there are records in the store, then we trigger the following event
+    if (getAllStores.result.length > 0) {
+      // loop through all of the records in the store and upload them to the server
+      getAllStores.result.forEach((record) => {
+        // create a fetch request to the server
+        fetch('/api/transaction', {
+          //  this is the method we are using to send data to the server
+          method: 'POST',
+          // this is the data we are sending to the server
+          body: JSON.stringify(record),
+          // this is the type of data we are sending to the server
+          headers: {
+            Accept: 'application/json, text/plain, */*',
+            'Content-Type': 'application/json',
+          },
+        })
+          // the response is the server's response to the request we made for the data
+          .then((response) => {
+            // we return the response to the server
+            return response.json();
+          })
+          .then((data) => {
+            // if errors we use windows message event to display error
+            if (data.message) {
+              throw new Error(data);
+            }
+
+            //  opens a transaction on the new_transaction object store with readwrite access
+            const transaction = db.transaction(['new_transaction'], 'readwrite');
+
+            // access the new_transaction object store
+            const store = transaction.objectStore('new_transaction');
+
+            // removes all the records from the store
+            store.clear(); // clear removes all the elements from a set
+
+            // if successful, then we trigger the following event and display a message to the user
+            alert('Your transactions have now been saved');
+          })
+          // if there is an error, then we trigger the following event
+          .catch((err) => {
+            console.log(err);
+          });
+      });
+    }
+  };
+}
+
+// listen for app coming back online
+window.addEventListener('online', checkDatabase);
