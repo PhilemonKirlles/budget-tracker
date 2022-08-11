@@ -52,13 +52,12 @@ function checkDatabase() {
     // if there are records in the store, then we trigger the following event
     if (getAllStores.result.length > 0) {
       // loop through all of the records in the store and upload them to the server
-      getAllStores.result.forEach((record) => {
         // create a fetch request to the server
-        fetch('/api/transaction', {
+        fetch('/api/transaction/bulk', {
           //  this is the method we are using to send data to the server
           method: 'POST',
           // this is the data we are sending to the server
-          body: JSON.stringify(record),
+          body: JSON.stringify(getAllStores.result),
           // this is the type of data we are sending to the server
           headers: {
             Accept: 'application/json, text/plain, */*',
@@ -92,7 +91,6 @@ function checkDatabase() {
           .catch((err) => {
             console.log(err);
           });
-      });
     }
   };
 }
