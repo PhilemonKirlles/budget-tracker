@@ -1,4 +1,10 @@
-//  variable for db connection
+
+const indexedDB =
+window.indexedDB ||
+window.mozIndexedDB ||
+window.webkitIndexedDB ||
+window.msIndexedDB ||
+window.shimIndexedDB;//  variable for db connection
 let db;
 
 //   establish a connection to the db making e.g variable called request
@@ -12,7 +18,7 @@ request.onupgradeneeded = function (event) {
   db.createObjectStore('new_transaction', { autoIncrement: true });
 };
 
-//  if successful connection, then we trigger the following event
+//  if successful connection, then trigger the following event
 request.onsuccess = function (event) {
   // saves a reference to the db
   db = event.target.result;
