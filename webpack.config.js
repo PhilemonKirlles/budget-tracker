@@ -1,8 +1,8 @@
-module.exports = {
-    entry: './server.js',
-    output: {
-      path: __dirname + '/dist',
-      filename: 'bundle.js'
-    },
-    mode: 'development'
-  };
+// module.exports = {
+//     entry: './server.js',
+//     output: {
+//       path: __dirname + '/dist',
+//       filename: 'bundle.js'
+//     },
+//     mode: 'development'
+//   };

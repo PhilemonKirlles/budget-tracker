@@ -13,13 +13,13 @@ const request = indexedDB.open('budget-tracker', 1);
 //event trigger the db as version changes
 request.onupgradeneeded = function (event) {
   // saves a reference to the db
-  db = event.target.result;
+  const db = event.target.result;
   // creates a new object store called new_transaction with an autoIncrementing primary key
   db.createObjectStore('new_transaction', { autoIncrement: true });
 };
 
 //  if successful connection, then trigger the following event
-request.onsuccess = function (event) {
+request.onsuccess = function(event) {
   // saves a reference to the db
   db = event.target.result;
   // if app is online upload new_transaction transactions
