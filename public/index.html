@@ -3,8 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <!-- <meta http-equiv="X-UA-Compatible" content="ie=edge" /> -->
     <meta name="theme-color" content="#317EFB" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link
       rel="shortcut icon"
       href="icons/icon-192x192.png"
@@ -12,8 +14,8 @@
     />
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/styles.css" />
-    <link rel="manifest" href="manifest.json" />
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="manifest" href="./manifest.json" />
 
     <title>BudgetTracker</title>
   </head>
@@ -31,6 +33,7 @@
           id="t-amount"
           placeholder="Transaction amount"
         />
+        
         <button id="add-btn">
           <i class="fa fa-plus buttons"></i> Add Funds
         </button>
@@ -59,9 +62,9 @@
         if ("serviceWorker" in navigator) {
           navigator.serviceWorker
             .register("./service-worker.js")
-            .then(() => console.log("Service Worker Registered"))
+            .then(() => console.log("Service-Worker Registered"))
             .catch((err) =>
-              console.log("Error during service worker registration:", err)
+              console.log("service-worker failed to register:", err)
             );
         }
       })();
