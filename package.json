@@ -2,10 +2,14 @@
   "name": "budget-tracker",
   "version": "1.0.0",
   "description": "An app to keep track of your financial balance",
+  "engines": {
+    "node": "16.14.0"
+  },
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
+    "install": "npm i",
     "dev": "npm start",
     "heroku-postbuild": "npm run dev"
   },
@@ -42,4 +46,6 @@
     "lite-server": "^2.6.1"
     
   }
+  
+  
 }
