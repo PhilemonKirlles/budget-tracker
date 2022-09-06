@@ -39,9 +39,9 @@ self.addEventListener('activate', function (e) {
       let cacheKeeplist = keyList.filter(function (key) {
         return key.indexOf(APP_PREFIX);
       })
+
       // add current cache name to white list
       cacheKeeplist.push(CACHE_NAME);
-
       return Promise.all(keyList.map(function (key, i) {
         if (cacheKeeplist.indexOf(key) === -1) {
           console.log('deleting cache : ' + keyList[i] );
@@ -61,6 +61,7 @@ self.addEventListener('fetch', function(evt) {
         .then(cache => {
           return fetch(evt.request)
             .then(response => {
+
               // If the response was good, clone it and store it in the cache.
               if (response.status === 200) {
                 cache.put(evt.request.url, response.clone());
@@ -79,6 +80,7 @@ self.addEventListener('fetch', function(evt) {
     return;
   }
 
+  
   evt.respondWith(
     fetch(evt.request).catch(function() {
       return caches.match(evt.request).then(function(response) {

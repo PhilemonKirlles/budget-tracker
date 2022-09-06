@@ -9,7 +9,7 @@
     "dev": "npm start & webpack --watch",
     "webpack": "webpack --watch",
     "build": "npm run webpack",
-    "heroku-postbuild": "echo Skip build on Heroku"
+    "heroku-postbuild": "npm run dev"
   },
   "repository": {
     "type": "git",
@@ -31,7 +31,7 @@
   "bugs": {
     "url": "https://github.com/PhilemonKirlles/budget-tracker/issues"
   },
-  "homepage": "https://github.com/PhilemonKirlles/budget-tracker#readme",
+  "homepage": "",
   "dependencies": {
     "compression": "^1.7.4",
     "dotenv": "^16.0.1",
