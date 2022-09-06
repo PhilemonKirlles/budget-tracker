@@ -2,9 +2,9 @@
 
 [[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-![Project Vedio](./public/assets/media/<...>)
+![Project image](.)
 
-<https://user-images.githubusercontent.com/99282495/174142721-53019795-c1b4-4a4e-aa2b-c5ed1098ab4d.mp4>
+<githublink to media>
 
 ---
 

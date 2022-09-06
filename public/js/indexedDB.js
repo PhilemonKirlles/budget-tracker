@@ -24,12 +24,13 @@ request.onsuccess = function(event) {
   db = event.target.result;
   // if app is online upload new_transaction transactions
   if (navigator.onLine) {
-    checkDatabase();
+    checkDB();
+    // note..*check back for correct terminology to upload new transactions*
   }
 };
 
 // if there is an error, then we trigger the following event
-request.onerror = function (event) {
+request.onerror = function(event) {
   console.log(event.target.errorCode);
 };
 
@@ -45,7 +46,7 @@ function saveRecord(record) {
 }
 
 // function to upload new_transaction transactions to server if app is online
-function checkDatabase() {
+function checkDB() {
   //  opens a transaction on db with readwrite access
   const transaction = db.transaction(['new_transaction'], 'readwrite');
   // accesses the new_transaction object store and stores it in a variable called store
@@ -102,4 +103,4 @@ function checkDatabase() {
 }
 
 // listen for app coming back online
-window.addEventListener('online', checkDatabase);
+window.addEventListener('online', checkDB);
