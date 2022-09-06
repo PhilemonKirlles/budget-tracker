@@ -4,10 +4,10 @@ const mongoose = require("mongoose");
 const logger = require("morgan");
 const compression = require("compression");
 
-require ("dotenv").config()
-
+require ("dotenv")
 const PORT = process.env.PORT || 3001;
 const app = express();
+
 
 app.use(logger("dev"));
 app.use(compression());
