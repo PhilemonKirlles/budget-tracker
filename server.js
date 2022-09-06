@@ -1,5 +1,6 @@
-const mongoose = require("mongoose");
+//require
 const express = require("express");
+const mongoose = require("mongoose");
 const logger = require("morgan");
 const compression = require("compression");
 
@@ -12,22 +13,19 @@ app.use(logger("dev"));
 app.use(compression());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
 app.use(express.static("public"));
 
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/budgetTracker_db';
 
-mongoose.connect(MONGODB_URI, {
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/budgetTracker_db', {
   useNewUrlParser: true,
-  // useFindAndModify: false,
-  useUnifiedTopology: true,
-  // useCreateIndex: true
+  useFindAndModify: false
 });
 
-mongoose.set('debug', true);
 
 // routes
 app.use(require("./routes/api.js"));
 
 app.listen(PORT, () => {
-  console.log(`App connected to Budget Tracker on http://localhost:${PORT}/`);
+  console.log(`App connected on http://localhost:${PORT}/`);
 });
