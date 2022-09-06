@@ -5,7 +5,7 @@ const logger = require("morgan");
 const compression = require("compression");
 
 require ("dotenv")
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3000;
 const app = express();
 
 
