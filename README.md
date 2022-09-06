@@ -4,7 +4,6 @@
 
 ![Project image](./public/images/BudgetTracker.jpg)
 
-
 ---
 
 ## Table of Contents

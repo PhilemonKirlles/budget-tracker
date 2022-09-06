@@ -2,9 +2,6 @@
   "name": "budget-tracker",
   "version": "1.0.0",
   "description": "An app to keep track of your financial balance",
-  "engines": {
-    "node": "16.14.0"
-  },
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -12,8 +9,8 @@
     "install": "npm i",
     "dev": "npm start",
     "heroku-prebuild": "echo This runs before Heroku installs dependencies.",
-  "heroku-postbuild": "echo This runs after Heroku installs dependencies, but before Heroku prunes and caches dependencies.",
-  "heroku-cleanup": "echo This runs after Heroku prunes and caches dependencies."
+    "heroku-postbuild": "echo This runs after Heroku installs dependencies, but before Heroku prunes and caches dependencies.",
+    "heroku-cleanup": "echo This runs after Heroku prunes and caches dependencies."
   },
   "repository": {
     "type": "git",
@@ -46,8 +43,8 @@
   },
   "devDependencies": {
     "lite-server": "^2.6.1"
-    
+  },
+  "engines": {
+    "node": "16.14.0"
   }
-  
-  
 }
