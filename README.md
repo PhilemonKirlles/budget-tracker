@@ -55,7 +55,7 @@ SO THAT my account balance is accurate when I am traveling"
 
 UConn bootcamp class License
 
-Copyright (c) [2022] [CatFishChisal]
+Copyright (c) [2022] [CatFishChisel]
 
 ## Contact
 
