@@ -48,8 +48,8 @@ SO THAT my account balance is accurate when I am traveling"
 
 ## Deployment Site
 
-[https://philemon-noted.herokuapp.com/
-](https://philemon-noted.herokuapp.com/)
+[https://budget-tracker-calc.herokuapp.com/
+](https://budget-tracker-calc.herokuapp.com/)
 
 ### License
 
