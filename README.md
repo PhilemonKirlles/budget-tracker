@@ -2,7 +2,7 @@
 
 [[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-![Project image](./public/images/BudgetTracker.jpg)
+![Project image](public/images/BudgetTracker.jpg)
 
 
 ---
@@ -48,14 +48,14 @@ SO THAT my account balance is accurate when I am traveling"
 
 ## Deployment Site
 
-[https://philemon-noted.herokuapp.com/
-](https://philemon-noted.herokuapp.com/)
+[https://budget-tracker-calc.herokuapp.com/
+](https://budget-tracker-calc.herokuapp.com/)
 
 ### License
 
 UConn bootcamp class License
 
-Copyright (c) [2022] [CatFishChisal]
+Copyright (c) [2022] [CatFishChisel]
 
 ## Contact
 
