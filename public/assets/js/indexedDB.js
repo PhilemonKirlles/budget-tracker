@@ -5,6 +5,8 @@ window.mozIndexedDB ||
 window.webkitIndexedDB ||
 window.msIndexedDB ||
 window.shimIndexedDB;//  variable for db connection
+public/assets/js/indexedDB.js
+
 
 let db;
 //   establish a connection to the db making e.g variable called request
