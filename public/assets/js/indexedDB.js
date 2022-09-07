@@ -5,10 +5,10 @@ window.mozIndexedDB ||
 window.webkitIndexedDB ||
 window.msIndexedDB ||
 window.shimIndexedDB;//  variable for db connection
-let db;
 
+let db;
 //   establish a connection to the db making e.g variable called request
-const request = indexedDB.open('budget-tracker', 1);
+const request = indexedDB.open('budget-tracker-db', 1);
 
 //event trigger the db as version changes
 request.onupgradeneeded = function (event) {

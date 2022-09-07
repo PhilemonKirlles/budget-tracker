@@ -6,11 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "install": "npm i",
-    "dev": "npm start",
-    "heroku-prebuild": "echo This runs before Heroku installs dependencies.",
-    "heroku-postbuild": "echo This runs after Heroku installs dependencies, but before Heroku prunes and caches dependencies.",
-    "heroku-cleanup": "echo This runs after Heroku prunes and caches dependencies."
+    "dev": "npm start & webpack --watch",
+    "webpack": "webpack --watch",
+    "build": "npm run webpack",
+    "heroku-postbuild": "echo Skip build on Heroku"
   },
   "repository": {
     "type": "git",
@@ -32,7 +31,7 @@
   "bugs": {
     "url": "https://github.com/PhilemonKirlles/budget-tracker/issues"
   },
-  "homepage": "",
+  "homepage": "https://github.com/PhilemonKirlles/budget-tracker#readme",
   "dependencies": {
     "compression": "^1.7.4",
     "dotenv": "^16.0.1",
@@ -42,9 +41,7 @@
     "node-service-worker": "^2.1.2"
   },
   "devDependencies": {
-    "lite-server": "^2.6.1"
-  },
-  "engines": {
-    "node": "16.14.0"
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0"
   }
 }

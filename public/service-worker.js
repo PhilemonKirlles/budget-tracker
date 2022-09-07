@@ -4,22 +4,19 @@ const CACHE_NAME = `${APP_PREFIX}${VERSION}`;
 const DATA_CACHE_NAME = `data-cache-${VERSION}`;
 const FILES_TO_CACHE = [
   '/',
-  './index.html',
-  './css/styles.css',
-  './js/index.js',
-  './js/indexedDB.js',
-  './manifest.json',
-  "./icons/icon-72x72.png",
-  "./icons/icon-96x96.png",
-  "./icons/icon-128x128.png",
-  "./icons/icon-144x144.png",
-  "./icons/icon-152x152.png",
-  "./icons/icon-192x192.png",
-  "./icons/icon-384x384.png",
-  "./icons/icon-512x512.png"
+  '/index.html',
+  '/manifest.json',
+  '/assets/css/styles.css',
+  '/assets/js/index.js',
+  '/assets/js/indexedDB.js',
+  '/assets/images/icons/icon-512x512.png',
+  '/assets/images/icons/icon-192x192.png',
+  '/assets/images/icons/icon-128x128.png',
+  '/assets/images/icons/icon-96x96.png',
+  '/assets/images/icons/icon-72x72.png'
 ];
 
-//  install(Cache resources) function
+//  install function
 self.addEventListener('install', function(evt) {
   evt.waitUntil(
     caches.open(CACHE_NAME).then(cache => {
@@ -39,9 +36,9 @@ self.addEventListener('activate', function (e) {
       let cacheKeeplist = keyList.filter(function (key) {
         return key.indexOf(APP_PREFIX);
       })
-
       // add current cache name to white list
       cacheKeeplist.push(CACHE_NAME);
+
       return Promise.all(keyList.map(function (key, i) {
         if (cacheKeeplist.indexOf(key) === -1) {
           console.log('deleting cache : ' + keyList[i] );
@@ -61,7 +58,6 @@ self.addEventListener('fetch', function(evt) {
         .then(cache => {
           return fetch(evt.request)
             .then(response => {
-
               // If the response was good, clone it and store it in the cache.
               if (response.status === 200) {
                 cache.put(evt.request.url, response.clone());
@@ -80,7 +76,6 @@ self.addEventListener('fetch', function(evt) {
     return;
   }
 
-  
   evt.respondWith(
     fetch(evt.request).catch(function() {
       return caches.match(evt.request).then(function(response) {
